@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+
+    {% block title %}
+        {% if object %} <h1>Editar alvo</h1> {% else %} <h1>Adicionar alvo</h1> {% endif %}
+    {% endblock %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-warning">
+                <a href="{% url 'index' %}">Cancelar</a>
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}
